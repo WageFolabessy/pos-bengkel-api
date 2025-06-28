@@ -31,4 +31,12 @@ export class UsersService {
     const { password: _, ...result } = user;
     return result;
   }
+
+  async findOneByUsername(username: string) {
+    return this.prisma.user.findUnique({
+      where: {
+        username,
+      },
+    });
+  }
 }
